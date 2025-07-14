@@ -1,3 +1,6 @@
+import 'productManager.dart';
+import 'helper.dart';
 void main() {
-  print('this is the main function of the mobile app for Product 2');
+  Productmanager  ecom = Productmanager();
+  start_app(ecom);
 }
