@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 // import 'package:e_commerce/data/dataRepo.dart';
 import 'package:e_commerce/models/product.dart';
-import 'package:e_commerce/pages/home.dart';
+// import 'package:e_commerce/pages/home.dart';
 import 'update.dart';
+import 'package:e_commerce/widgets/category_and_rating.dart';
+import 'package:e_commerce/widgets/name_and_price.dart';
 
 class Details extends StatelessWidget {
   final Product product;

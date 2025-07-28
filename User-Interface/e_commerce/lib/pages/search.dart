@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:e_commerce/models/product.dart';
 import 'package:e_commerce/data/dataRepo.dart';
-import 'package:e_commerce/pages/home.dart';
+// import 'package:e_commerce/pages/home.dart';
 import 'package:e_commerce/pages/update.dart';
+import 'package:e_commerce/widgets/product_tile.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

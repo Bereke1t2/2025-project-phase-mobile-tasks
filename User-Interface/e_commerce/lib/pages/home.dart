@@ -1,9 +1,10 @@
-import 'package:e_commerce/pages/details.dart';
+// import 'package:e_commerce/pages/details.dart';
 import 'package:e_commerce/pages/update.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/data/dataRepo.dart';
-import 'package:e_commerce/models/product.dart';
+// import 'package:e_commerce/models/product.dart';
 import 'package:e_commerce/pages/search.dart';
+import 'package:e_commerce/widgets/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -141,133 +142,4 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class ProductTile extends StatelessWidget {
-  const ProductTile({super.key, required this.product});
 
-  final Product product;
-
-  @override
-  Widget build(BuildContext context) {
-    return  GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Details(product: product)),
-        );
-        // Navigate to product details page
-      },
-      child:  Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          color: const Color(0xFFFFFFFF),
-          padding: const EdgeInsets.all(0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (product.imageUrl.startsWith('assets/')) ...[
-                Image.asset(
-                  product.imageUrl,
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.cover,
-                ),
-              ] else ...[
-                Image.network(
-                  product.imageUrl,
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.cover,
-                ),
-              ],
-              const SizedBox(height: 10),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    NameAndPrice(product: product),
-                    CategoryAndRating(product: product),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    )
-    );
-  }
-}
-
-class NameAndPrice extends StatelessWidget {
-  const NameAndPrice({super.key, required this.product , this.time = 1.0});
-
-  final Product product;
-  final double time;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          product.formattedName,
-          style: TextStyle(
-            fontSize: 18 * time,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          product.formattedPrice,
-          style: TextStyle(
-            fontSize: 16 * time,
-            color: Color(0xFF3E3E3E),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class CategoryAndRating extends StatelessWidget {
-  const CategoryAndRating({super.key, required this.product , this.time = 1.0});
-
-  final Product product;
-  final double time;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          product.formattedCategory,
-          style: TextStyle(
-            fontSize: 12* time,
-            color: Color(0xFFAAAAAA),
-          ),
-        ),
-        RichText(
-          text: TextSpan(
-            text: '★ ',
-            style: TextStyle(
-              fontSize: 20 * time,
-              color: Color(0xFFFFD700),
-            ),
-            children: [
-              TextSpan(
-                text: product.formattedRating,
-                style: TextStyle(
-                  fontSize: 12 * time,
-                  color: Color(0xFFAAAAAA),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
