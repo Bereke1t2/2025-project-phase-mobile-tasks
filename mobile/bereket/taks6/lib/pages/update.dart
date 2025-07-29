@@ -28,7 +28,7 @@ class _UpdatePageState extends State<UpdatePage> {
     super.initState();
     _nameController = TextEditingController(text: widget.product?.name ?? '');
     _categoryController = TextEditingController(text: widget.product?.category ?? '');
-    _priceController = TextEditingController(text: widget.product?.price?.toString() ?? '');
+    _priceController = TextEditingController(text: widget.product?.price.toString() ?? '');
     _descriptionController = TextEditingController(text: widget.product?.description ?? '');
     if (widget.product?.imageUrl != null && widget.product!.imageUrl.isNotEmpty) {
       _image = File(widget.product!.imageUrl);

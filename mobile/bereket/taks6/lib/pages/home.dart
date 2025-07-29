@@ -1,9 +1,7 @@
 // import 'package:e_commerce/pages/details.dart';
-import 'package:e_commerce/pages/update.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/data/dataRepo.dart';
 // import 'package:e_commerce/models/product.dart';
-import 'package:e_commerce/pages/search.dart';
 import 'package:e_commerce/widgets/product_tile.dart';
 import 'package:go_router/go_router.dart';
 

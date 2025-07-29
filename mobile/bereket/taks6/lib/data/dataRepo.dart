@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:e_commerce/models/product.dart';
 
 // ignore: non_constant_identifier_names

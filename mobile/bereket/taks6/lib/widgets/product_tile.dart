@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:e_commerce/models/product.dart';
 import 'category_and_rating.dart';
 import 'name_and_price.dart';
-import 'package:e_commerce/pages/details.dart';
 import 'package:go_router/go_router.dart';
 
 
