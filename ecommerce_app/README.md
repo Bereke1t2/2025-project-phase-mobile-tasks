@@ -1,16 +1,58 @@
-# ecommerce_app
+# Ecommerce App
 
-A new Flutter project.
+A mobile application for seamless online shopping, built with modern technologies.
+
+## Features
+
+-get products by product_id
+-update product
+-get products
+-delete products
+-create product
+
+## Technologies Used
+
+- Flutter (Dart)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK
+- Android Studio or Xcode
+- Firebase account
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/ecommerce_app.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd ecommerce_app
+    ```
+3. Install dependencies:
+    ```bash
+    flutter pub get
+    ```
+4. Run the app:
+    ```bash
+    flutter run
+    ```
+
+## Folder Structure
+
+```
+lib/
+  core/
+  futures/
+        date/
+        domain/
+        presetation/
+
+```
+
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests.
