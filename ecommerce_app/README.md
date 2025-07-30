@@ -4,11 +4,11 @@ A mobile application for seamless online shopping, built with modern technologie
 
 ## Features
 
--get products by product_id
--update product
--get products
--delete products
--create product
+- get products by product_id
+- update product
+- get products
+- delete products
+- create product
 
 ## Technologies Used
 
@@ -19,14 +19,14 @@ A mobile application for seamless online shopping, built with modern technologie
 ### Prerequisites
 
 - Flutter SDK
-- Android Studio or Xcode
-- Firebase account
+- Android Studio or vscode
 
 ### Installation
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/ecommerce_app.git
+    git clone https://github.com/bereke1t2/2025-project-phase-mobile-tasks
+/ecommerce_app.git
     ```
 2. Navigate to the project directory:
     ```bash
