@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
-import '../../../../core/platform/networkinfo.dart';
+import '../../../../core/networks/networkinfo.dart';
 // import '../../data/models/product_model.dart';
 import '../../domain/entities/product_entity.dart';
 import '../../domain/repositories/product_repository.dart';
@@ -22,7 +22,9 @@ class ProductRepositoryImpl implements ProductRepository {
     if (await networkInfo.isConnected) {
       try {
         final remoteProducts = await productRemoteDataSource.fetchProducts();
+        await productLocalDataSource.cacheProducts(remoteProducts);
         return Right(remoteProducts.map((model) => ProductModel.toEntity(model)).toList());
+
       } catch (e) {
         return const Left(ServerFailure());
       }
@@ -46,32 +48,24 @@ class ProductRepositoryImpl implements ProductRepository {
         return const Left(ServerFailure());
       }
     } else {
-      try {
-        final localProduct = await productLocalDataSource.fetchProductById(id);
-        return Right(ProductModel.toEntity(localProduct));
-      } catch (e) {
-        return const Left(ServerFailure());
-      }
+      return const Left(NetworkFailure());
     }
   }
+
   @override
   Future<Either<Failure, void>> insertProduct(ProductEntity product) async {
     if (await networkInfo.isConnected) {
       try {
         final productModel = ProductModel.fromEntity(product);
         await productRemoteDataSource.addProduct(productModel);
+        await productLocalDataSource.addProduct(productModel);
         return const Right(null);
+
       } catch (e) {
         return const Left(ServerFailure());
       }
     } else {
-      try {
-        final productModel = ProductModel.fromEntity(product);
-        await productLocalDataSource.addProduct(productModel);
-        return const Right(null);
-      } catch (e) {
-        return const Left(ServerFailure());
-      }
+      return const Left(NetworkFailure());
     }
   }
 
@@ -86,13 +80,7 @@ class ProductRepositoryImpl implements ProductRepository {
         return const Left(ServerFailure());
       }
     } else {
-      try {
-        final productModel = ProductModel.fromEntity(product);
-        await productLocalDataSource.updateProduct(productModel);
-        return const Right(null);
-      } catch (e) {
-        return const Left(ServerFailure());
-      }
+      return const Left(NetworkFailure());
     }
   }
 
@@ -105,13 +93,8 @@ class ProductRepositoryImpl implements ProductRepository {
       } catch (e) {
         return const Left(ServerFailure());
       }
-    } else {
-      try {
-        await productLocalDataSource.deleteProduct(id);
-        return const Right(null);
-      } catch (e) {
-        return const Left(ServerFailure());
-      }
+    } else{
+      return const Left(NetworkFailure());
     }
   }
 }
