@@ -11,3 +11,7 @@ abstract class Failure extends Equatable {
   @override
   String toString() => 'Failure(message: $message)';
 }
+
+class ServerFailure extends Failure {
+  const ServerFailure() : super('Server failure occurred');
+}

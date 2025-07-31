@@ -29,5 +29,14 @@ class ProductModel extends ProductEntity{
       'imageUrl': imageUrl,
     };
   }
+  static ProductModel fromEntity(ProductEntity entity) {
+    return ProductModel(
+      id: entity.id,
+      name: entity.name,
+      price: entity.price,
+      description: entity.description,
+      imageUrl: entity.imageUrl,
+    );
+  }
   
 }
