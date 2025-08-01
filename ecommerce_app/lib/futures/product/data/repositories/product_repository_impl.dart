@@ -26,14 +26,14 @@ class ProductRepositoryImpl implements ProductRepository {
         return Right(remoteProducts.map((model) => ProductModel.toEntity(model)).toList());
 
       } catch (e) {
-        return const Left(ServerFailure());
+        return const Left(RemoteFailure(message:'Failed to fetch products from remote'));
       }
     } else {
       try {
         final localProducts = await productLocalDataSource.fetchProducts();
         return Right(localProducts.map((model) => ProductModel.toEntity(model)).toList());
       } catch (e) {
-        return const Left(ServerFailure());
+        return const Left(CacheFailure(message:'Failed to fetch products from cache'));
       }
     }
   }
@@ -45,10 +45,10 @@ class ProductRepositoryImpl implements ProductRepository {
         final remoteProduct = await productRemoteDataSource.fetchProductById(id);
         return Right(ProductModel.toEntity(remoteProduct));
       } catch (e) {
-        return const Left(ServerFailure());
+        return const Left(RemoteFailure(message:'Failed to fetch product from remote'));
       }
     } else {
-      return const Left(NetworkFailure());
+      return const Left(NetworkFailure(message:'Network is not connected'));
     }
   }
 
@@ -62,10 +62,10 @@ class ProductRepositoryImpl implements ProductRepository {
         return const Right(null);
 
       } catch (e) {
-        return const Left(ServerFailure());
+        return const Left(ServerFailure(message:'Failed to insert product'));
       }
     } else {
-      return const Left(NetworkFailure());
+      return const Left(NetworkFailure(message:'Network is not connected'));
     }
   }
 
@@ -77,10 +77,10 @@ class ProductRepositoryImpl implements ProductRepository {
         await productRemoteDataSource.updateProduct(productModel);
         return const Right(null);
       } catch (e) {
-        return const Left(ServerFailure());
+        return const Left(ServerFailure(message:'Failed to update product'));
       }
     } else {
-      return const Left(NetworkFailure());
+      return const Left(NetworkFailure(message:'Network is not connected'));
     }
   }
 
@@ -91,10 +91,10 @@ class ProductRepositoryImpl implements ProductRepository {
         await productRemoteDataSource.deleteProduct(id);
         return const Right(null);
       } catch (e) {
-        return const Left(ServerFailure());
+        return const Left(ServerFailure(message:'Failed to delete product'));
       }
     } else {
-      return const Left(NetworkFailure());
+      return const Left(NetworkFailure(message:'Network is not connected'));
     }
   }
 }
