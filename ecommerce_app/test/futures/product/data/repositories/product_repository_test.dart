@@ -59,7 +59,7 @@ void main() {
 
     test('should return remote product when connected to the network', () async {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-      when(mockRemoteDataSource.fetchProductById(productId)).thenAnswer((_) async => ProductModel(id: productId, name: 'Test', description: 'Test', price: 10.0, imageUrl: 'test.jpg'));
+      when(mockRemoteDataSource.fetchProductById(productId)).thenAnswer((_) async => const ProductModel(id: productId, name: 'Test', description: 'Test', price: 10.0, imageUrl: 'test.jpg'));
 
       final result = await productRepository.getProductById(productId);
 
@@ -72,7 +72,7 @@ void main() {
 
 
   group('updateProduct', () {
-    final product = ProductModel(id: '1', name: 'Test', description: 'Test', price: 10.0, imageUrl: 'test.jpg');
+    final product = const ProductModel(id: '1', name: 'Test', description: 'Test', price: 10.0, imageUrl: 'test.jpg');
 
     test('should call remote data source when connected to the network', () async {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);

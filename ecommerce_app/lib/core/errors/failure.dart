@@ -19,6 +19,8 @@ class ServerFailure extends Failure {
 class CacheFailure extends Failure {
   const CacheFailure() : super('Cache failure occurred');
 }
+
+
 class NetworkFailure extends Failure {
   const NetworkFailure() : super('Network failure occurred');
 }
