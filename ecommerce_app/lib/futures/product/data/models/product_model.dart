@@ -35,7 +35,7 @@ class ProductModel extends ProductEntity{
       name: entity.name,
       price: entity.price,
       description: entity.description,
-      imageUrl: entity.imageUrl,
+      imageUrl: entity.imageUrl
     );
   }
   static ProductEntity toEntity(ProductModel model) {

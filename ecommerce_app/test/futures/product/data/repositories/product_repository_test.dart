@@ -103,7 +103,7 @@ void main() {
   });
 
   group('insertProduct', () {
-    final product = ProductModel(id: '1', name: 'Test', description: 'Test', price: 10.0, imageUrl: 'test.jpg');
+    final product = const ProductModel(id: '1', name: 'Test', description: 'Test', price: 10.0, imageUrl: 'test.jpg');
 
     test('should call remote data source when connected to the network', () async {
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);

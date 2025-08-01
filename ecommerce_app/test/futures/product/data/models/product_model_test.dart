@@ -3,7 +3,7 @@ import 'package:ecommerce_app/futures/product/domain/entities/product_entity.dar
 import 'package:test/test.dart';
 
 void main() {
-  final tProductModel = ProductModel(
+  final tProductModel = const ProductModel(
     id: '1',
     name: 'Test Product',
     description: 'This is a test product',

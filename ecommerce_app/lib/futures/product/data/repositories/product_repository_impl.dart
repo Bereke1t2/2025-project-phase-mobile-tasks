@@ -93,7 +93,7 @@ class ProductRepositoryImpl implements ProductRepository {
       } catch (e) {
         return const Left(ServerFailure());
       }
-    } else{
+    } else {
       return const Left(NetworkFailure());
     }
   }
