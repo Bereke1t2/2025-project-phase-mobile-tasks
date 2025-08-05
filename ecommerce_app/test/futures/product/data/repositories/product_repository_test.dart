@@ -4,12 +4,13 @@ import 'package:ecommerce_app/futures/product/data/data_sources/remote/product_r
 import 'package:ecommerce_app/futures/product/data/models/product_model.dart';
 import 'package:ecommerce_app/futures/product/data/repositories/product_repository_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 // Create mock classes
-class MockProductRemoteDataSources extends Mock implements ProductRemoteDataSources {}
-class MockProductLocalDataSources extends Mock implements ProductLocalDataSources {}
-class MockNetworkInfo extends Mock implements NetworkInfo {}
+
+@GenerateMocks([NetworkInfo, ProductRemoteDataSources, ProductLocalDataSources ])
+import 'product_repository_test.mocks.dart';
 
 void main() {
   late ProductRepositoryImpl productRepository;

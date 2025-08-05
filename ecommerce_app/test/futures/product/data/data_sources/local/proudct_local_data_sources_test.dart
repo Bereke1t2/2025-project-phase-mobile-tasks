@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'package:ecommerce_app/futures/product/data/data_sources/local/product_local_data_source.dart';
 import 'package:ecommerce_app/futures/product/data/models/product_model.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-class MockSharedPreferences extends Mock implements SharedPreferences {}
-class MockProductLocalDataSource extends Mock implements ProductLocalDataSources {}
+@GenerateMocks([SharedPreferences , ProductLocalDataSourceImpl])
+import 'proudct_local_data_sources_test.mocks.dart' show MockSharedPreferences;
 
 void main() {
   late ProductLocalDataSourceImpl productLocalDataSource;
